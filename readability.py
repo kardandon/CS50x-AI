@@ -5,9 +5,9 @@ S = 0
 for i in range(len(string)):
     if (string[i].isalpha()):
         L += 1
-    elif (string[i].ispace()):
+    elif (string[i].isspace()):
         W += 1
-        while(string[i].ispace()):
+        while(string[i].isspace()):
             i += 1
         i -= 1
     elif (string[i] == '!' or string[i] == '?' or string[i] == '.'):
