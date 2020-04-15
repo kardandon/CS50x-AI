@@ -4,9 +4,9 @@
 int main(void)
 {
 int n,i,j;
-printf("Height: ");
-scanf("%d",&n);
-if(n>0 && n<9){
+do{
+n= get_int("Height: ");
+}while(!(n>0 && n<9));
 for(i=0;i<n;i++){
     for(j=n-i-1;j>0;j--)
         printf(" ");
@@ -17,7 +17,6 @@ for(i=0;i<n;i++){
         printf("#");
     printf("\n");
 }
-}
-else main();
+
 return 0;
 }
