@@ -6,7 +6,7 @@ int main(void)
 int n,i,j;
 printf("Height: ");
 scanf("%d",&n);
-if(n>0){
+if(n>0 && n<9){
 for(i=0;i<n;i++){
     for(j=n-i-1;j>0;j--)
         printf(" ");
@@ -18,6 +18,6 @@ for(i=0;i<n;i++){
     printf("\n");
 }
 }
-else printf("You must enter an integer greater than 0;");
+else main();
 return 0;
 }
