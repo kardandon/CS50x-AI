@@ -15,7 +15,8 @@ int main(void)
         {
             L++;
         }
-        else if (isspace(text[i])){
+        else if (isspace(text[i]))
+        {
             W++;
             while (isspace(text[i]))
             {
@@ -29,14 +30,15 @@ int main(void)
         }
     }
     W++;
-    int z = round(0.0588 * L / W * 100 - 0.296 * S / W * 100 - 15.8) > 16 ? 17 : round(0.0588 * L / W * 100 - 0.296 * S / W * 100 - 15.8);
+    int z = round(0.0588 * L / W * 100 - 0.296 * S / W * 100 - 15.8) > 16 ? 17 : round(0.0588 * L / W * 100 - 0.296 * S / W * 100 -
+            15.8);
     if (z == 17)
     {
         printf("Grade 16+\n");
     }
-    else if ( z >= 1)
+    else if (z >= 1)
     {
-    printf("Grade %d\n" ,z);
+        printf("Grade %d\n", z);
     }
     else
     {
