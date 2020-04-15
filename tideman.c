@@ -174,7 +174,10 @@ bool check_cycle (int x, int y)
     for (int i = 0 ; i < candidate_count ; i++){
         if (locked[y][i])
         {
-            check_cycle(x,i);
+            if (check_cycle(x,i))
+            {
+                return true;
+            }
         }
     }
     return false;
@@ -185,10 +188,10 @@ void lock_pairs(void)
     // TODO
     for (int i = 0 ; i < pair_count ; i++)
     {
-        locked[pairs[i].winner][pairs[i].loser]=true;
+        locked[pairs[i].winner][pairs[i].loser] = true;
         if (check_cycle(pairs[i].winner, pairs[i].loser))
         {
-            locked[pairs[i].winner][pairs[i].loser]=false;
+            locked[pairs[i].winner][pairs[i].loser] = false;
         }
     }
     return;
