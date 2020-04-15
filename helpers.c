@@ -19,6 +19,7 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
     return;
 }
 
+
 void sepia(int height, int width, RGBTRIPLE image[height][width])
 {
     int originalRed;
@@ -31,9 +32,9 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
             originalRed = image[i][j].rgbtRed;
             originalBlue = image[i][j].rgbtBlue;
             originalGreen = image[i][j].rgbtGreen;
-            image[i][j].rgbtRed = round( 0.393 * originalRed + 0.769 * originalBlue + 0.189 * originalGreen) <= 255 ? round( 0.393 * originalRed + 0.769 * originalBlue + 0.189 * originalGreen) : 255;
-            image[i][j].rgbtBlue = round(0.349 * originalRed + 0.686 * originalBlue + 0.168 * originalGreen) <= 255 ? round(0.349 * originalRed + 0.686 * originalBlue + 0.168 * originalGreen) : 255;
-            image[i][j].rgbtGreen = round(0.272 * originalRed + 0.534 * originalBlue + 0.131 * originalGreen) <= 255 ? round(0.272 * originalRed + 0.534 * originalBlue + 0.131 * originalGreen) : 255;
+            image[i][j].rgbtRed = round(0.393 * originalRed + 0.769 * originalGreen + 0.189 * originalBlue) <= 255 ? round(0.393 * originalRed + 0.769 * originalGreen + 0.189 * originalBlue) : 255;
+            image[i][j].rgbtBlue = round(0.349 * originalRed + 0.686 * originalGreen + 0.168 * originalBlue) <= 255 ? round(0.349 * originalRed + 0.686 * originalGreen + 0.168 * originalBlue) : 255;
+            image[i][j].rgbtGreen = round(0.272 * originalRed + 0.534 * originalGreen + 0.131 * originalBlue) <= 255 ? round(0.272 * originalRed + 0.534 * originalGreen + 0.131 * originalBlue) : 255;
         }
     }
     return;
