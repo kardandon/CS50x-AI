@@ -12,12 +12,12 @@ for j in reversed(n):
     sum += digitsum(2**i * int(j))
     i = i == 0
 if (sum % 10 != 0):
-    print("INVALID\n")
+    print("INVALID")
 elif ((n[0:2] == "34" or n[0:2] == "37") and len(n) == 15):
-    print("AMEX\n")
-elif ((n[0:2] == "51" or n[0:2] == "52" or n[0:1] == "53" or n[0:1] == "54" or n[0:1] == "55") and len(n) == 16):
-    print("MASTERCARD\n")
+    print("AMEX")
+elif ((n[0:2] == "51" or n[0:2] == "52" or n[0:2] == "53" or n[0:2] == "54" or n[0:2] == "55") and len(n) == 16):
+    print("MASTERCARD")
 elif ((n[0] == "4") and (len(n) == 13 or len(n) == 16)):
     print("VISA\n")
 else:
-    print("INVALID\n")
+    print("INVALID")
