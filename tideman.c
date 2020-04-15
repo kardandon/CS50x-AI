@@ -118,7 +118,7 @@ void record_preferences(int ranks[])
     // TODO
     for (int i = 0 ; i < candidate_count ; i++)
     {
-        for (int j = i+1 ; j < candidate_count ; j++)
+        for (int j = i + 1 ; j < candidate_count ; j++)
         {
             preferences[ranks[i]][ranks[j]]++;
         }
@@ -132,7 +132,7 @@ void add_pairs(void)
     // TODO
     for (int i = 0 ; i < candidate_count ; i++)
     {
-        for (int j = i+1 ; j < candidate_count ; j++)
+        for (int j = i + 1 ; j < candidate_count ; j++)
         {
             if (preferences[i][j] > preferences[j][i])
             {
@@ -151,7 +151,7 @@ void add_pairs(void)
     }
     return;
 }
-int lambda(const void *a,const void *b)
+int lambda(const void *a, const void *b)
 {
     pair *A = (pair *)a;
     pair *B = (pair *)b;
@@ -165,16 +165,17 @@ void sort_pairs(void)
     qsort(pairs, pair_count, sizeof(pair), lambda);
     return;
 }
-bool check_cycle (int x, int y)
+bool check_cycle(int x, int y)
 {
     if (locked[y][x])
     {
         return true;
     }
-    for (int i = 0 ; i < candidate_count ; i++){
+    for (int i = 0 ; i < candidate_count ; i++)
+    {
         if (locked[y][i])
         {
-            if (check_cycle(x,i))
+            if (check_cycle(x, i))
             {
                 return true;
             }
