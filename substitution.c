@@ -4,7 +4,8 @@
 #include <ctype.h>
 #include <math.h>
 
-int number(char a){
+int number(char a)
+{
     if (a >= 'A' && a <= 'Z')
     {
         a -= 'A';
@@ -15,7 +16,7 @@ int number(char a){
     }
     return a;
 }
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     if (argc != 2)
     {
@@ -29,11 +30,11 @@ int main(int argc, char* argv[])
     }
     bool alpha[26], flag = true;
     int i;
-    for (i = 0; i < 26 ;i++)
+    for (i = 0; i < 26 ; i++)
     {
         alpha[i] = false;
     }
-    for (i = 0; i < 26 ;i++)
+    for (i = 0; i < 26 ; i++)
     {
         if (number(argv[1][i]) < 0 || number(argv[1][i]) > 25)
         {
@@ -66,14 +67,14 @@ int main(int argc, char* argv[])
             }
             else
             {
-                printf("%c",text[i]);
+                printf("%c", text[i]);
             }
         }
     }
     else
     {
-       printf("Usage: ./substitution key");
-       return 1;
+        printf("Usage: ./substitution key");
+        return 1;
     }
     printf("\n");
     return 0;
