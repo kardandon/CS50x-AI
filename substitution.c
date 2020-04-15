@@ -20,10 +20,12 @@ int main(int argc, char* argv[])
     if (argc != 2)
     {
         printf("Usage: ./substitution key");
+        return 1;
     }
     else if (strlen(argv[1]) != 26)
     {
         printf("Key must contain 26 characters.");
+        return 1;
     }
     bool alpha[26], flag = true;
     int i;
@@ -71,6 +73,7 @@ int main(int argc, char* argv[])
     else
     {
        printf("Usage: ./substitution key");
+       return 1;
     }
     printf("\n");
     return 0;
