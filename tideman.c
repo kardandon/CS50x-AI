@@ -207,13 +207,11 @@ void print_winner(void)
     {
         for (int i = 0 ; i < candidate_count ; i++)
         {
-            if (now != 1 && !locked[i][winner])
+            if (now != i && !locked[i][winner])
             {
                 now = i;
                 break;
             }
-
-
         }
         if (winner != now)
         {
