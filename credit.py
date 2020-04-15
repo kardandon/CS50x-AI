@@ -5,6 +5,7 @@ def digitsum(n):
         n //= 10
     return a
 
+
 n = input("Number: ")
 i = False
 sum = 0
