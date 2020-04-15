@@ -3,14 +3,14 @@
 
 int main(void)
 {
-    float n;
+    float m;
     int num = 0;
     do
     {
-        n = get_float("Change owed: ");
+        m = get_float("Change owed: ");
     }
     while (!(n > 0));
-    n *= 100;
+    int n = round(m * 100);
     while (n != 0)
     {
         if (n >= 25)
