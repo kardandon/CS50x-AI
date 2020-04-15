@@ -92,7 +92,7 @@ void print_winner(void)
             max = candidates[i].votes;
         }
     }
-        for (i = 0 ; i < MAX ; i++)
+    for (i = 0 ; i < MAX ; i++)
     {
         if (max == candidates[i].votes)
         {
