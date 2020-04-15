@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <cs50.h>
-#include <string.h>
-#include <stdint.h>
 
-typedef uint8_t BYTE;
+
 
 int main(int argc, char *argv[])
 {
@@ -19,14 +16,14 @@ int main(int argc, char *argv[])
         printf("Could not open\n");
         return 1;
     }
-    BYTE block[512];
-    int a = 0;
-    FILE *img;
-    string filename = "";
-    while(!feof(f))
+    unsigned char block[512];
+    short a = 0;
+    FILE *img = NULL;
+    char filename[8] = "0000.jpg";
+    while (fread(&block, 512, 1, f) == 1)
     {
-        fread(block, sizeof(BYTE), 512, f);
-        if(block[0]==0xff || block[1] == 0xd8 || block[2] == 0xff || (block[3] & 0xf0) == 0xe0)
+
+        if(block[0]==0xff && block[1] == 0xd8 && block[2] == 0xff && (block[3] & 0xf0) == 0xe0)
         {
             sprintf(filename, "%03i.jpg", a);
             img = fopen(filename, "w");
@@ -37,10 +34,12 @@ int main(int argc, char *argv[])
             }
             a++;
         }
-        if(img!=NULL)
+        if(img != NULL)
         {
-            fwrite(block, sizeof(BYTE), 512, img);
+            fwrite(&block, 512, 1, img);
         }
     }
+    fclose(f);
+    fclose(img);
     return 0;
 }
