@@ -17,14 +17,37 @@ int number(char a){
 }
 int main(int argc, char* argv[])
 {
-    if (strlen(argv[1]) != 26)
+    if (argc != 2)
+    {
+        printf("Usage: ./substitution key");
+    }
+    else if (strlen(argv[1]) != 26)
     {
         printf("Key must contain 26 characters.");
     }
-    else
+    bool alpha[26], flag = true;
+    int i;
+    for (i = 0; i < 26 ;i++)
+    {
+        alpha[i] = false;
+    }
+    for (i = 0; i < 26 ;i++)
+    {
+        if (number(argv[1][i]) < 0 || number(argv[1][i]) > 25)
+        {
+            flag = false;
+            break;
+        }
+        if (alpha[number(argv[1][i])])
+        {
+            flag = false;
+            break;
+        }
+        alpha[number(argv[1][i])] = true;
+    }
+    if (flag)
     {
         string text = get_string("plaintext:  ");
-        int i;
         printf("ciphertext: ");
         for (i = 0; i < strlen(text); i++)
         {
@@ -44,6 +67,10 @@ int main(int argc, char* argv[])
                 printf("%c",text[i]);
             }
         }
+    }
+    else
+    {
+       printf("Usage: ./substitution key");
     }
     printf("\n");
     return 0;
