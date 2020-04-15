@@ -9,7 +9,7 @@ int main(void)
     {
         m = get_float("Change owed: ");
     }
-    while (!(n > 0));
+    while (!(m > 0));
     int n = round(m * 100);
     while (n != 0)
     {
