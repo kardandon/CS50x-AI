@@ -32,15 +32,19 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
             originalRed = image[i][j].rgbtRed;
             originalBlue = image[i][j].rgbtBlue;
             originalGreen = image[i][j].rgbtGreen;
-            image[i][j].rgbtRed = round(0.393 * originalRed + 0.769 * originalGreen + 0.189 * originalBlue) <= 255 ? round(0.393 * originalRed + 0.769 * originalGreen + 0.189 * originalBlue) : 255;
-            image[i][j].rgbtGreen = round(0.349 * originalRed + 0.686 * originalGreen + 0.168 * originalBlue) <= 255 ? round(0.349 * originalRed + 0.686 * originalGreen + 0.168 * originalBlue) : 255;
-            image[i][j].rgbtBlue = round(0.272 * originalRed + 0.534 * originalGreen + 0.131 * originalBlue) <= 255 ? round(0.272 * originalRed + 0.534 * originalGreen + 0.131 * originalBlue) : 255;
+            image[i][j].rgbtRed = round(0.393 * originalRed + 0.769 * originalGreen + 0.189 * originalBlue) <= 255 ? round(
+                                      0.393 * originalRed + 0.769 * originalGreen + 0.189 * originalBlue) : 255;
+            image[i][j].rgbtGreen = round(0.349 * originalRed + 0.686 * originalGreen + 0.168 * originalBlue) <= 255 ? round(
+                                        0.349 * originalRed + 0.686 * originalGreen + 0.168 * originalBlue) : 255;
+            image[i][j].rgbtBlue = round(0.272 * originalRed + 0.534 * originalGreen + 0.131 * originalBlue) <= 255 ? round(
+                                       0.272 * originalRed + 0.534 * originalGreen + 0.131 * originalBlue) : 255;
         }
     }
     return;
 }
 
-void swap (RGBTRIPLE *a, RGBTRIPLE *b){
+void swap(RGBTRIPLE *a, RGBTRIPLE *b)
+{
     RGBTRIPLE tmp;
     tmp.rgbtRed = a->rgbtRed;
     tmp.rgbtBlue = a->rgbtBlue;
@@ -57,9 +61,9 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
     for (int i = 0 ; i < height ; i++)
     {
-        for (int j = 0 ; j < width/2 ; j++)
+        for (int j = 0 ; j < width / 2 ; j++)
         {
-            swap(&image[i][j], &image[i][width-1-j]);
+            swap(&image[i][j], &image[i][width - 1 - j]);
         }
     }
     return;
@@ -102,9 +106,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     }
                 }
             }
-            image[i][j].rgbtRed = (int)round(tempRed/count);
-            image[i][j].rgbtGreen = (int)round(tempGreen/count);
-            image[i][j].rgbtBlue = (int)round(tempBlue/count);
+            image[i][j].rgbtRed = (int)round(tempRed / count);
+            image[i][j].rgbtGreen = (int)round(tempGreen / count);
+            image[i][j].rgbtBlue = (int)round(tempBlue / count);
         }
     }
     return;
