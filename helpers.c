@@ -40,11 +40,16 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
 }
 
 void swap (RGBTRIPLE *a, RGBTRIPLE *b){
-    RGBTRIPLE *tmp;
-    tmp = a;
-    a = b;
-    b= tmp;
-    free(tmp);
+    RGBTRIPLE tmp;
+    tmp.rgbtRed = a->rgbtRed;
+    tmp.rgbtBlue = a->rgbtBlue;
+    tmp.rgbtGreen = a->rgbtGreen;
+    a->rgbtRed = b->rgbtRed;
+    a->rgbtBlue = b->rgbtBlue;
+    a->rgbtGreen = b->rgbtGreen;
+    b->rgbtRed = tmp.rgbtRed;
+    b->rgbtBlue = tmp.rgbtBlue;
+    b->rgbtGreen = tmp.rgbtGreen;
     return;
 }
 void reflect(int height, int width, RGBTRIPLE image[height][width])
