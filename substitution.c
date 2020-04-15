@@ -30,7 +30,14 @@ int main(int argc, char* argv[])
         {
             if (isalpha(text[i]))
             {
-                printf("%c", argv[1][number(text[i])]);
+                if (islower(text[i]))
+                {
+                    printf("%c", tolower(argv[1][number(text[i])]));
+                }
+                else
+                {
+                    printf("%c", toupper(argv[1][number(text[i])]));
+                }
             }
             else
             {
