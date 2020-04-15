@@ -19,4 +19,4 @@ if (z > 16):
 elif (z < 1):
     print("Before Grade 1")
 else:
-    print("Grade" + str(z))
+    print("Grade " + str(z))
