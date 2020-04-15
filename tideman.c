@@ -1,5 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 // Max number of candidates
 #define MAX 9
@@ -150,26 +151,18 @@ void add_pairs(void)
     }
     return;
 }
-
+int lambda(const void *a,const void *b)
+{
+    pair *A = (pair *)a;
+    pair *B = (pair *)b;
+    return preferences[B->winner][B->loser] > preferences[A->winner][A->loser];
+}
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
     // TODO
-    bool flag = 0;
-    int tmp;
-    for (int i = 0 ; i < pair_count && !flag ; i++)
-    {
-        flag = 1;
-        for (int j = i+1 ; j < pair_count ; j++)
-        {
-            if (preferences[pairs[i].winner][pairs[j].loser] > preferences[pairs[j].winner][pairs[j].loser]){
-                tmp = j;
-                j = i;
-                i = tmp;
-                flag = 0;
-            }
-        }
-    }
+
+    qsort(pairs, pair_count, sizeof(pair), lambda);
     return;
 }
 bool check_cycle (int x, int y)
