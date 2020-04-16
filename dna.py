@@ -26,8 +26,6 @@ def main():
     txtFile.close()
     for i in range(1,len(csv[0])):
         count.append(txt.count(csv[0][i]))
-        print(csv[0][i])
-    print(count)
     for i in range(1, len(csv)):
         if(count == list(map(int,csv[i][1:len(csv[0])]))):
             print(csv[i][0])
