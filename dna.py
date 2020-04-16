@@ -1,6 +1,20 @@
 import sys
-import pandas as pd
 
+def counting(a,b):
+    max = 0
+    count = 0
+    i = 0
+    while (i <(len(b)-len(a)+1)):
+        if (b[i:len(a)+i] == a):
+            count += 1
+            i = len(a)+i-1
+        elif (max < count):
+            max = count
+            count = 0
+        else:
+            count = 0
+        i += 1
+    return max
 
 def main():
     if (len(sys.argv) != 3 ):
@@ -24,7 +38,7 @@ def main():
     csvFile.close()
     txtFile.close()
     for i in range(1,len(csv[0])):
-        count.append(txt.count(csv[0][i]))
+        count.append(counting(csv[0][i],txt))
     for i in range(1, len(csv)):
         if(count == list(map(int,csv[i][1:len(csv[0])]))):
             print(csv[i][0])
