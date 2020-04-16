@@ -67,7 +67,7 @@ bool load(const char *dictionary)
         {
             table[hash(temp)] = (node *) malloc(sizeof(node));
             table[hash(temp)]->next  = NULL;
-            strcat(table[hash(temp)]->word, "");
+            strcpy(table[hash(temp)]->word, "");
         }
         tmp = table[hash(temp)];
 
@@ -78,7 +78,7 @@ bool load(const char *dictionary)
         }
         tmp->next = (node *) malloc(sizeof(node));
         tmp->next->next = NULL;
-        strcat(tmp->next->word, "");
+        strcpy(tmp->next->word, "");
         strcpy(tmp->word, temp);
         cnt++;
         count[hash(temp)] = cnt;
