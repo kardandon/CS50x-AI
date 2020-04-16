@@ -15,19 +15,19 @@ typedef struct node
     struct node *next;
 }
 node;
-
 // Number of buckets in hash table
 const unsigned int N = 26;
 
 // Hash table
 node *table[N];
+
 int count[N];
 
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {
     // TODO
-    node *tmp;
+    node *tmp = NULL;
     tmp = table[hash(word)];
     while (tmp != NULL)
     {
@@ -49,7 +49,7 @@ unsigned int hash(const char *word)
 // Loads dictionary into memory, returning true if successful else false
 bool load(const char *dictionary)
 {
-    node *tmp;
+    node *tmp = NULL;
     bool flag = true;
     int cnt = 0;
     char temp[LENGTH + 1] = "";
@@ -66,6 +66,7 @@ bool load(const char *dictionary)
         if (table[hash(temp)] == NULL)
         {
             table[hash(temp)] = (node *) malloc(sizeof(node));
+            table[hash(temp)]->next  = NULL;
         }
         tmp = table[hash(temp)];
 
@@ -75,6 +76,7 @@ bool load(const char *dictionary)
                 tmp = tmp->next;
             }
         tmp->next = (node *) malloc(sizeof(node));
+        tmp->next->next = NULL;
         strcpy(tmp->word, temp);
         cnt++;
         count[hash(temp)] = cnt;
@@ -99,7 +101,7 @@ unsigned int size(void)
 bool unload(void)
 {
     // TODO
-    node *tmp1, *tmp2;
+    node *tmp1 = NULL, *tmp2 = NULL;
     for (int i = 0 ; i < 26 ; i ++)
     {
         tmp1 = table[i];
