@@ -15,7 +15,6 @@ def main():
         print("Unable to open files")
         return 1
     csvv = csvFile.read().split("\n")
-    print(csvv)
     csv = list()
     for i in range(len(csvv)):
         csv.append(list(csvv[i].split(",")))
