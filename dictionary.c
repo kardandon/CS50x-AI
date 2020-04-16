@@ -50,6 +50,7 @@ unsigned int hash(const char *word)
 bool load(const char *dictionary)
 {
     node *tmp;
+    bool flag = true;
     int cnt = 0;
     char temp[LENGTH + 1] = "";
     // TODO
@@ -60,6 +61,7 @@ bool load(const char *dictionary)
     }
     while(!feof(dict))
     {
+        cnt = 0;
         fscanf(dict, " %s ", temp);
         if (table[hash(temp)] == NULL)
         {
@@ -85,7 +87,7 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {
     // TODO
-    unsigned int a = 0;
+    int a = 0;
     for (int i = 0 ; i < 26 ; i++)
     {
         a += count[i];
