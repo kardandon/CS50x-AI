@@ -59,7 +59,7 @@ bool load(const char *dictionary)
     {
         return false;
     }
-    while(!feof(dict))
+    while (!feof(dict))
     {
         cnt = 0;
         fscanf(dict, " %s ", temp);
@@ -71,10 +71,10 @@ bool load(const char *dictionary)
         tmp = table[hash(temp)];
 
         while (tmp->next != NULL)
-            {
-                cnt++;
-                tmp = tmp->next;
-            }
+        {
+            cnt++;
+            tmp = tmp->next;
+        }
         tmp->next = (node *) malloc(sizeof(node));
         tmp->next->next = NULL;
         strcpy(tmp->word, temp);
