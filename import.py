@@ -15,7 +15,7 @@ with open(sys.argv[1],'r') as file:
         name = row["name"].split(" ")
         if (len(name)!= 3):
             name.append(name[1])
-            name[1] = "\\N"
+            name[1] = None
         house = row["house"]
         birth = row["birth"]
         db.execute("INSERT INTO students (first, middle, last, house, birth) VALUES(?, ?, ?, ?, ?)", name[0], name[1], name[2], house, birth)

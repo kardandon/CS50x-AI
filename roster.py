@@ -13,8 +13,8 @@ lib = db.execute("SELECT first,middle,last,birth FROM students WHERE house = ? O
 
 for row in lib:
     name = " "
-    if (row["middle"] == "\\N"):
+    if (row["middle"] == None):
         name = row["first"] + name + row["last"]
     else:
         name = row["first"] + name + row["middle"] + name + row["last"]
-    print(name + ", born",row["birth"])
+    print(name + ", born", row["birth"])
