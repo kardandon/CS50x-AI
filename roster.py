@@ -1,6 +1,7 @@
 # TODO
 from cs50 import *
-import sys,csv
+import sys
+import csv
 
 
 if len(sys.argv) != 2:
