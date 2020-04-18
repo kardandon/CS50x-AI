@@ -1,0 +1,59 @@
+body
+{
+    background-color: white;
+}
+h1
+{
+    text-align: center;
+    font-size: 48px;
+    font-family: "Times New Roman";
+    font-weight: bold;
+}
+.Title
+{
+    height: 18vh;
+    line-height: 90px;
+    text-align: center;
+}
+.Home
+{
+    height: 90px;
+    align-items: center;
+    width: 8%;
+    margin: auto;
+}
+.Border
+{
+    margin: auto;
+    align-items: center;
+    padding: 60px;
+}
+.Home_img
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+}
+.input_num
+{
+    padding: 8px;
+    line-height: 28px;
+}
+.Home_Buttons_div
+{
+    padding: 20px;
+    vertical-align:middle;
+    text-align: center;
+}
+.Home_Buttons
+{
+    padding: 20px 30px 50px;
+}
+.index_body
+{
+    height: 100vh;
+    width: 100vw;
+    vertical-align: center;
+    align-items: center;
+}
