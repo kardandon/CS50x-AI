@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your Account
+{% endblock %}
+
+{% block main %}
+ <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+                <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td style="font-weight: bold;">{{total_value}}</td>
+            </tr>
+        </tfoot>
+        {% for value in values %}
+        <tbody>
+            <tr>
+                <td>{{value.symbol}}</td>
+                <td>{{value.name}}</td>
+                <td>{{value.shares}}</td>
+                <td>{{value.price}}</td>
+                <td>{{value.total}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+
+        <tbody>
+
+            <tr>
+                <td>CASH</td>
+                <td colspan="3"></td>
+                <td>{{current_cash}}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
