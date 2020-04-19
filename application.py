@@ -24,6 +24,7 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
+
 # Custom filter
 app.jinja_env.filters["usd"] = usd
 
@@ -46,23 +47,21 @@ if not os.environ.get("API_KEY"):
 def index():
     """Show portfolio of stocks"""
 
-    id =session.get("user_id")
+    id = session.get("user_id")
     rows = db.execute("SELECT symbol,sum(shares) FROM history WHERE user_id = :id GROUP BY symbol ORDER BY symbol", id=id)
-    current_cash=db.execute("SELECT cash FROM users WHERE id=:id",id=id)[0]["cash"]
-    total= current_cash
+    current_cash = db.execute("SELECT cash FROM users WHERE id=:id", id=id)[0]["cash"]
+    total = current_cash
     for i in range(len(rows)):
-        w=rows[i]
+        w = rows[i]
         if w["sum(shares)"] == 0:
             del rows[i]
             continue
         sym = lookup(w["symbol"])
-        w["name"],w["price"],w["total"] = sym["name"], usd(sym["price"]), sym["price"] * w["sum(shares)"]
+        w["name"], w["price"], w["total"] = sym["name"], usd(sym["price"]), sym["price"] * w["sum(shares)"]
         w["shares"] = w["sum(shares)"]
         total += w["total"]
         w["total"] = usd(w["total"])
     return render_template("index.html", values=rows, current_cash=usd(current_cash), total_value=usd(total))
-
-
 
 
 @app.route("/buy", methods=["GET", "POST"])
@@ -75,7 +74,7 @@ def buy():
         try:
             sym = request.form.get("symbol")
             shares = int(request.form.get("shares"))
-            if shares == None :
+            if shares == None:
                 return apology("Missing Shares", 400)
             value = lookup(sym)
             if value == None:
@@ -88,8 +87,9 @@ def buy():
                 return apology("CAN'T AFFORD", 400)
             else:
                 now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                db.execute("INSERT INTO history (user_id,symbol,shares,price,transacted) VALUES(:userid, :symbol, :shares, :price, :transacted)", userid=id, symbol=sym, shares=shares, price=value["price"], transacted=now)
-                db.execute("UPDATE users SET cash = :cash WHERE id=:id", cash = money - transection, id = id)
+                db.execute("INSERT INTO history (user_id,symbol,shares,price,transacted) VALUES(:userid, :symbol, :shares, :price, :transacted)",
+                           userid=id, symbol=sym, shares=shares, price=value["price"], transacted=now)
+                db.execute("UPDATE users SET cash = :cash WHERE id=:id", cash=money - transection, id=id)
             flash('Bought')
             return redirect("/")
         except:
@@ -102,10 +102,10 @@ def history():
     """Show history of transactions"""
     try:
         id = session.get("user_id")
-        values = db.execute("SELECT symbol, shares, price, transacted FROM history WHERE user_id=:id",id=id)
+        values = db.execute("SELECT symbol, shares, price, transacted FROM history WHERE user_id=:id", id=id)
         for w in values:
             w["price"] = usd(w["price"])
-        return render_template("history.html",values = values)
+        return render_template("history.html", values=values)
     except:
         return apology("Something went wrong")
 
@@ -164,13 +164,13 @@ def quote():
     """Get stock quote."""
     try:
         if request.method == "GET":
-            return render_template("quote.html",string = "")
+            return render_template("quote.html", string="")
         else:
             symbol = request.form.get("symbol")
             value = lookup(symbol)
             if value == None:
-                return render_template("quote.html",string = "Invalid Symbol of The Stock")
-            return render_template("quote.html",string = "A share of " + str(value["name"]) +" ("+symbol+ ") costs " +str(value["price"]))
+                return render_template("quote.html", string="Invalid Symbol of The Stock")
+            return render_template("quote.html", string="A share of " + str(value["name"]) + " ("+symbol + ") costs " + str(value["price"]))
     except:
         return apology("Something went wrong")
 
@@ -201,7 +201,8 @@ def register():
             if len(rows) != 0:
                 return apology("username is already in use", 403)
 
-            db.execute("INSERT INTO users (username,hash) VALUES(:username, :hash)", username=usrn, hash=generate_password_hash(pw1))
+            db.execute("INSERT INTO users (username,hash) VALUES(:username, :hash)",
+                       username=usrn, hash=generate_password_hash(pw1))
             # Login and Remember which user has logged in
             rows = db.execute("SELECT * FROM users WHERE username = :username",
                               username=request.form.get("username"))
@@ -223,20 +224,20 @@ def sell():
     """Sell shares of stock"""
     try:
         id = session.get("user_id")
-        rows = db.execute("SELECT symbol, sum(shares) FROM history WHERE user_id=:id GROUP BY symbol ORDER BY symbol", id = id)
-        values=[]
+        rows = db.execute("SELECT symbol, sum(shares) FROM history WHERE user_id=:id GROUP BY symbol ORDER BY symbol", id=id)
+        values = []
         for r in rows:
             if (r["sum(shares)"] > 0):
-                values.append([r["symbol"],r["sum(shares)"]])
+                values.append([r["symbol"], r["sum(shares)"]])
         if request.method == "GET":
-            return render_template("sell.html", values = values )
+            return render_template("sell.html", values=values)
         else:
             sym = request.form.get("symbol")
             shares = int(request.form.get("shares"))
             if sym == None:
                 return apology("Please Choose A Symbol", 400)
-            sym= sym.split(":")[0]
-            if shares == None :
+            sym = sym.split(":")[0]
+            if shares == None:
                 return apology("Missing Shares", 400)
             value = lookup(sym)
             if value == None:
@@ -251,8 +252,9 @@ def sell():
             money = db.execute("SELECT cash FROM users WHERE id = :id", id=id)[0]["cash"]
             transection = value["price"] * shares
             now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            db.execute("INSERT INTO history (user_id,symbol,shares,price,transacted) VALUES(:userid, :symbol, :shares, :price, :transacted)", userid=id, symbol=sym, shares=-shares, price=value["price"], transacted=now)
-            db.execute("UPDATE users SET cash = :cash WHERE id=:id", cash = money + transection, id = id)
+            db.execute("INSERT INTO history (user_id,symbol,shares,price,transacted) VALUES(:userid, :symbol, :shares, :price, :transacted)",
+                       userid=id, symbol=sym, shares=-shares, price=value["price"], transacted=now)
+            db.execute("UPDATE users SET cash = :cash WHERE id=:id", cash=money + transection, id=id)
             flash('Sold!')
             return redirect("/")
     except:
