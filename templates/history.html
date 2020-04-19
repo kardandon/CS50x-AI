@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your Account
+{% endblock %}
+
+{% block main %}
+  <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Transacted UTC</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for val in values %}
+                <tr>
+                    <td>{{val.symbol}}</td>
+                    <td>{{val.shares}}</td>
+                    <td>{{val.price}}</td>
+                    <td>{{val.transacted}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
