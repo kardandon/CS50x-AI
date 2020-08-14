@@ -117,10 +117,10 @@ def utility(board):
 def min_value(board):
     if terminal(board):
         return utility(board)
-    val = -2
+    val = 2
     for act in actions(board):
-        val = max(val, max_value(result(board, act)))
-        if val == 1:
+        val = min(val, max_value(result(board, act)))
+        if val == -1:
             break
     return val
 
@@ -128,10 +128,10 @@ def min_value(board):
 def max_value(board):
     if terminal(board):
         return utility(board)
-    val = 2
+    val = -2
     for act in actions(board):
-        val = min(val, min_value(result(board, act)))
-        if val == -1:
+        val = max(val, min_value(result(board, act)))
+        if val == 1:
             break
     return val
 
@@ -156,19 +156,21 @@ def minimax(board):
     if pl == X:
         val = -2
         for act in acts:
-            cv = max_value(result(board, act))
+            cv = min_value(result(board, act))
             if val < cv:
                 val = cv
                 best = act
+            print(val)
             if val == 1:
                 return best
     else:
         val = 2
         for act in acts:
-            cv = min_value(result(board, act))
+            cv = max_value(result(board, act))
             if val > cv:
                 val = cv
                 best = act
+            print(val)
             if val == -1:
                 return best
     return best
