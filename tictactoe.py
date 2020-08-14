@@ -160,7 +160,6 @@ def minimax(board):
             if val < cv:
                 val = cv
                 best = act
-            print(val)
             if val == 1:
                 return best
     else:
@@ -170,7 +169,6 @@ def minimax(board):
             if val > cv:
                 val = cv
                 best = act
-            print(val)
             if val == -1:
                 return best
     return best
