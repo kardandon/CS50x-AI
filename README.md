@@ -13,7 +13,7 @@
   8a: Game Track -> Mario and Pong with Lua/Löve\
   8b: Android Track -> fiftygram, notes and pokedex\
   8c: Web Track -> homepage, finance\
-  FP: final project -> project\
+  FP: final project -> project
 # CS50AI: https://cs50.harvard.edu/ai/2020/
   0: Search -> Degrees, tictactoe\
   1: Knowledge -> Knights, Minesweeper\
@@ -21,4 +21,4 @@
   3: Optimization -> Crossword\
   4: Learning -> Shopping, Nim\
   5: Neural Networks -> Traffic\
-  6: Language -> Parser, Questions\
+  6: Language -> Parser, Questions
