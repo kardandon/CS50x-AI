@@ -1,2 +1,2 @@
-# CS50x
-https://cs50.harvard.edu/x/2020/
+# CS50AI Crosswords
+https://cs50.harvard.edu/ai/2020/projects/3/crossword/
