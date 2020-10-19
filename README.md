@@ -15,6 +15,7 @@
   8c: Web Track -> homepage, finance\
   FP: final project -> project
 # CS50AI: https://cs50.harvard.edu/ai/2020/
+# [Youtube](https://www.youtube.com/playlist?list=PL82YrwnLckrJzR5iaqkGiBm_IjTZhkbcr)
   0: Search -> Degrees, tictactoe\
   1: Knowledge -> Knights, Minesweeper\
   2: Uncertainty -> Pagerank, Heredity\
