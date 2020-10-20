@@ -1,5 +1,5 @@
 # kardandon
-# Choose branches for tasks
+# Choose from branches for tasks
 # CS50x: https://cs50.harvard.edu/x/2020/
   0: Scratch -> scratch\
   1: C -> Hello, Mario/more, Mario/less, cash, credit\
